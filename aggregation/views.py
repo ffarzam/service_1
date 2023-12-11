@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-from .models import Site, City
+from .models import Site, City, Province
 
 from .utils import get_related_queryset
 
@@ -30,4 +30,15 @@ class FillCityTableView(APIView):
         city_obj =(City(**item) for item in data)
 
         City.objects.bulk_create(city_obj, ignore_conflicts=True)
+        return Response({"message": "city table was created"}, status=status.HTTP_200_OK)
+
+
+class FillProvinceTableView(APIView):
+
+    def get(self, request):
+        data = get_related_queryset("province")
+
+        province_obj =(City(**item) for item in data)
+
+        Province.objects.bulk_create(province_obj, ignore_conflicts=True)
         return Response({"message": "city table was created"}, status=status.HTTP_200_OK)

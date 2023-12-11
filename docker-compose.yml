@@ -1,0 +1,41 @@
+services:
+
+
+  postgres:
+    container_name: postgres
+    image: postgres:14.0
+    environment:
+      POSTGRES_USER: ${USER}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: ${NAME}
+    networks:
+      - main
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: app
+    volumes:
+      - .:/code/
+    networks:
+      - main
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+    restart: always
+
+
+
+networks:
+  main:
+
+volumes:
+  postgres_data:
+
+
+

@@ -41,4 +41,4 @@ class FillProvinceTableView(APIView):
         province_obj =(Province(**item) for item in data)
 
         Province.objects.bulk_create(province_obj, ignore_conflicts=True)
-        return Response({"message": "city table was created"}, status=status.HTTP_200_OK)
+        return Response({"message": "province table was created"}, status=status.HTTP_200_OK)

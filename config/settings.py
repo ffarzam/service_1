@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from django.db.models import Sum, Avg, Max, Min
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -41,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'dumpdata'
+    'dumpdata',
+    "aggregation"
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,35 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AGGREGATION = {
+    "kpi_1": "sum",
+    "kpi_2": "avg",
+    "kpi_3": "min",
+    "kpi_4": "max",
+    "kpi_5": "sum",
+    "kpi_6": "avg",
+    "kpi_7": "min",
+    "kpi_8": "max",
+    "kpi_9": "sum",
+    "kpi_10": "avg",
+    "kpi_11": "max",
+    "kpi_12": "min",
+    "kpi_13": "sum",
+    "kpi_14": "avg",
+    "kpi_15": "max",
+    "kpi_16": "min",
+    "kpi_17": "sum",
+    "kpi_18": "avg",
+    "kpi_19": "max",
+    "kpi_20": "min",
+}
+
+
+AGGREGATION_MAPPER = {
+    "sum": Sum,
+    "avg": Avg,
+    "max": Max,
+    "min": Min,
+}

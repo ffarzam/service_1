@@ -11,10 +11,6 @@ from .mixins import ItemsMixin
 class Site(ItemsMixin, KPI):
     site = models.CharField(max_length=25, unique=True)
 
-    # def get_kpi(self, kpi):
-    #     field_object = self.__class__._meta.get_field(kpi)
-    #     return field_object.value_from_object(self)
-
     @classmethod
     def get_queryset_with_in_operator(cls, elements):
         return cls.objects.filter(site__in=elements)
@@ -25,10 +21,6 @@ class Site(ItemsMixin, KPI):
 
 class Province(ItemsMixin, KPI):
     province = models.CharField(max_length=100, unique=True)
-
-    # def get_kpi(self, kpi):
-    #     field_object = self.__class__._meta.get_field(kpi)
-    #     return field_object.value_from_object(self)
 
     @classmethod
     def get_queryset_with_in_operator(cls, elements):
